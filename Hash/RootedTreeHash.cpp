@@ -15,7 +15,6 @@ template<
     int MOD = 1000000007,
     unsigned long long SEED1 = 100000000000000003ULL,
     unsigned long long SEED2 = 1000000000000000003ULL> struct RootedTreeHash {
-  int _n;
   vector<pair<int, int> > _allEdges;
   vector<vector<int> > _edges;
   vector<unsigned long long> _hashs;
