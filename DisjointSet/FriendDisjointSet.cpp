@@ -53,4 +53,3 @@ struct FriendDisjointSet {
     return _setCnt;
   }
 };
-
