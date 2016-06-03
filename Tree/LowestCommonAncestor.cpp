@@ -7,7 +7,7 @@
  *   preprocess();
  *   calc(node1, node2);
  */
-template<int MAXN, int MAXBIT> struct LowestCommonAncestor {
+struct LowestCommonAncestor {
   int _m;
   vector<int> _height, _idx, _in, _out, _LOG2;
   vector<vector<int> > _edges;
@@ -42,6 +42,7 @@ template<int MAXN, int MAXBIT> struct LowestCommonAncestor {
         _rmq[bit][i] = min(_rmq[bit - 1][i], _rmq[bit - 1][i + (1 << (bit - 1))]);
       }
     }
+    _LOG2.resize(_m + 1);
     for (int i = 1; i <= _m; i++) {
       _LOG2[i] = __builtin_popcount(i) == 1 ? __builtin_ctz(i) : _LOG2[i - 1];
     }
@@ -61,11 +62,11 @@ template<int MAXN, int MAXBIT> struct LowestCommonAncestor {
   void init(int n) {
     int n3 = n * 3;
     _edges.resize(n);
+    for (auto &edges : _edges) edges.clear();
     _height.resize(n3);
     _idx.resize(n3);
     _in.resize(n);
     _out.resize(n);
-    _LOG2.resize(n3);
     parent.resize(n);
     depth.resize(n);
   }
